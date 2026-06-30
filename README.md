@@ -17,8 +17,9 @@
         3. If you want more supported games ask for them in the comments (NO BIG GAMES WITH ANTI-CHEAT!)`
 
 ### Script:
-`
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ZombiegoblinIsCool/GamingKillerRBLX/refs/heads/main/Hub.lua"))()`
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ZombiegoblinIsCool/GamingKillerRBLX/refs/heads/main/Hub.lua"))()
+```
 
 | Games | Status |
 |--|--|
