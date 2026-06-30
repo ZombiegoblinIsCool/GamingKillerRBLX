@@ -16,6 +16,10 @@
         2. to minimize/reopen the window kress K on your keyboard
         3. If you want more supported games ask for them in the comments (NO BIG GAMES WITH ANTI-CHEAT!)`
 
+### Script:
+`
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ZombiegoblinIsCool/GamingKillerRBLX/refs/heads/main/Hub.lua"))()`
+
 | Games | Status |
 |--|--|
 | [ASMR Tower](http://https://www.roblox.com/games/111363135577981/ASMR-Tower "ASMR Tower") | 🟢 |
