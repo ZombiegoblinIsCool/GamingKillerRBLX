@@ -30,6 +30,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ZombiegoblinIsCool/Ga
 | [Mrbeast's Deadly Obby](http://https://www.roblox.com/games/88264996806108/Mrbeasts-Deadly-Obby "Mrbeast's Deadly Obby") | 🟢 |
 | [Easy Obby Fun](http://https://www.roblox.com/games/16225943017/Easy-Obby-Fun "Easy Obby Fun") | 🟢 |
 | [Sell Lemons 🍋](http://https://www.roblox.com/games/79268393072444/Sell-Lemons "Sell Lemons 🍋") | 🟠 |
+| [Boba Tea Obby!](https://www.roblox.com/games/17509256499/Boba-Tea-Obby "Boba Tea Obby!") | 🟢 |
 
 
 ##### 🟢 =  working
