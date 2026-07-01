@@ -41,4 +41,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ZombiegoblinIsCool/Ga
 ##### 🟠 = W.i.P (In Development)
 ##### 🟡 = Detected
 ##### 🚨 = Not Working (And Also Detected)
+##### 😭🙏 = EOL (End Of Life/No Further Updates)
 ##### Can have multiple statuses!
