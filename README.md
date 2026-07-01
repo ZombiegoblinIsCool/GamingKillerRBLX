@@ -21,7 +21,7 @@
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ZombiegoblinIsCool/GamingKillerRBLX/refs/heads/main/Hub.lua"))()
 ```
-## Supported Games & Status!
+### Supported Games & Status!
 
 | Games | Status |
 |--|--|
