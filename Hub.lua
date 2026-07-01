@@ -1060,6 +1060,71 @@ elseif gameId == 17509256499 then
     end)
 
 -- =========================================================
+-- GameId: 2551991523
+-- =========================================================
+elseif gameId == 2551991523 then
+    local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
+    local section1 = window:tab("Auto-Farm", "rbxassetid://109121102062195")
+    section1:label("Auto-Farm:")
+
+    local FARM_CFRAME = CFrame.new(2777.73486, 701.756409, -353.703705, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+    -- Create invisible platform at farm spot
+    local function createPlatform()
+        local existing = workspace:FindFirstChild("GK_FarmPlatform")
+        if existing then existing:Destroy() end
+
+        local part = Instance.new("Part")
+        part.Name = "GK_FarmPlatform"
+        part.Size = Vector3.new(10, 1, 10)
+        part.CFrame = FARM_CFRAME
+        part.Anchored = true
+        part.CanCollide = true
+        part.Transparency = 1
+        part.Parent = workspace
+
+        return part
+    end
+
+    section1:button("Create Farm Platform + TP", function()
+        createPlatform()
+        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+        local hrp = char:WaitForChild("HumanoidRootPart")
+        hrp.CFrame = FARM_CFRAME + Vector3.new(0, 3, 0)
+    end)
+
+    section1:button("Teleport to Farm Spot", function()
+        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+        local hrp = char:WaitForChild("HumanoidRootPart")
+        hrp.CFrame = FARM_CFRAME + Vector3.new(0, 3, 0)
+    end)
+
+    section1:button("Auto-Farm Loop (Platform + TP + Play Again)", function()
+        task.spawn(function()
+            while true do
+                -- Create platform & TP to farm spot
+                createPlatform()
+                local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+                local hrp = char:WaitForChild("HumanoidRootPart")
+                hrp.CFrame = FARM_CFRAME + Vector3.new(0, 3, 0)
+
+                -- Wait 30 seconds then reset
+                task.wait(30)
+
+                local Event = game:GetService("ReplicatedStorage"):FindFirstChild("Functions")
+                    and game:GetService("ReplicatedStorage").Functions:FindFirstChild("LoadCharacter")
+                if Event and Event:IsA("RemoteFunction") then
+                    Event:InvokeServer()
+                    -- Wait for new character to load
+                    game.Players.LocalPlayer.CharacterAdded:Wait()
+                else
+                    warn("❌ LoadCharacter remote not found!")
+                end
+            end
+        end)
+    end)
+
+-- =========================================================
 -- Unsupported game → list supported games
 -- =========================================================
 else
@@ -1117,7 +1182,13 @@ else
         TeleportService:Teleport(targetPlaceId)
     end)
 
+    section1:button("Broken Bones IV", function()
+        local TeleportService = game:GetService("TeleportService")
+        local targetPlaceId = 2551991523
+        TeleportService:Teleport(targetPlaceId)
+    end)
+
     error("This game is not supported by GamingKiller! (Maybe request it in the comments) Game name: " .. gameName)
 end
 
--- 8 games RN (soon 9!)
+-- 9 games RN (soon 10!)
