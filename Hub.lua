@@ -185,7 +185,7 @@ section1:toggle("Lemon Stand", false, function(enabled)
                     local lemonStand = purchases:FindFirstChild("Lemon Stand")
                     if lemonStand then
                         local buttons = lemonStand:FindFirstChild("Buttons")
-                        if buttons then
+                        if buttons and buttons:GetAttribute("Enabled") == true then
 
                             -- alle subfolders
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
@@ -287,7 +287,7 @@ section1:toggle("Lemon Dash", false, function(enabled)
                     local lemonDash = purchases:FindFirstChild("LemonDash")
                     if lemonDash then
                         local buttons = lemonDash:FindFirstChild("Buttons")
-                        if buttons then
+                        if buttons and buttons:GetAttribute("Enabled") == true then
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
@@ -376,7 +376,7 @@ section1:toggle("Lemon Depot", false, function(enabled)
                     local lemonDepot = purchases:FindFirstChild("Lemon Depot")
                     if lemonDepot then
                         local buttons = lemonDepot:FindFirstChild("Buttons")
-                        if buttons then
+                        if buttons and buttons:GetAttribute("Enabled") == true then
 
                             -- alle subfolders (Depot heeft overal iets)
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
@@ -475,7 +475,7 @@ section1:toggle("Hills", false, function(enabled)
                     local hills = purchases:FindFirstChild("Hills")
                     if hills then
                         local buttons = hills:FindFirstChild("Buttons")
-                        if buttons then
+                        if buttons and buttons:GetAttribute("Enabled") == true then
 
                             -- Hills heeft GEEN subfolders → alles zit direct in Buttons
                             for _, item in ipairs(buttons:GetDescendants()) do
@@ -566,7 +566,7 @@ section1:toggle("Lemon Trading", false, function(enabled)
                     local lemonTrading = purchases:FindFirstChild("Lemon Trading")
                     if lemonTrading then
                         local buttons = lemonTrading:FindFirstChild("Buttons")
-                        if buttons then
+                        if buttons and buttons:GetAttribute("Enabled") == true then
 
                             -- Lemon Trading heeft overal items
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
