@@ -13,7 +13,7 @@
     
     QUICK QUIDE:
         1. use the buttons under the window to open a script menu 
-        2. to minimize/reopen the window kress K on your keyboard
+        2. to minimize/reopen the window press K on your keyboard
         3. If you want more supported games ask for them in the comments (NO BIG GAMES WITH ANTI-CHEAT!)`
 
 ### Script:
