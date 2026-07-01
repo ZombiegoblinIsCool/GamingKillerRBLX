@@ -162,7 +162,7 @@ elseif gameId == 79268393072444 then
     section1:label("Auto Buy System:")
 
 ---------------------------------------------------------
--- 🟡 AUTO‑BUY LEMON STAND (Enabled + Purchased + Retry + TP)
+-- 🟡 AUTO‑BUY LEMON STAND (Enabled + Purchased + Shown + Retry + TP)
 ---------------------------------------------------------
 section1:toggle("Lemon Stand", false, function(enabled)
     print("Auto‑Buy Lemon Stand:", enabled)
@@ -200,9 +200,10 @@ section1:toggle("Lemon Stand", false, function(enabled)
                                             local btn = item.Parent
                                             local enabledAttr = btn:GetAttribute("Enabled")
                                             local purchasedAttr = btn:GetAttribute("Purchased")
+                                            local shownAttr = btn:GetAttribute("Shown")
 
-                                            -- alleen kopen als Enabled = true en Purchased = false
-                                            if enabledAttr == true and purchasedAttr == false then
+                                            -- alleen kopen als Enabled = true en Purchased = false en Shown = true
+                                            if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                                 print("🟢 Probeer aankoop:", btn.Name)
 
                                                 local success = false
@@ -247,8 +248,9 @@ section1:toggle("Lemon Stand", false, function(enabled)
                                 if purchaseRemote then
                                     local enabledAttr = mainStand:GetAttribute("Enabled")
                                     local purchasedAttr = mainStand:GetAttribute("Purchased")
+                                    local shownAttr = mainStand:GetAttribute("Shown")
 
-                                    if enabledAttr == true and purchasedAttr == false then
+                                    if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                         print("🟢 Koop: Lemon Stand")
                                         local success = false
 
@@ -288,7 +290,7 @@ section1:toggle("Lemon Stand", false, function(enabled)
     end
 end)
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY LEMON DASH (Enabled + Purchased + Retry + TP)
+-- 🟠 AUTO‑BUY LEMON DASH (Enabled + Purchased + Shown + Retry + TP)
 ---------------------------------------------------------
 section1:toggle("Lemon Dash", false, function(enabled)
     print("Auto‑Buy Lemon Dash:", enabled)
@@ -321,8 +323,9 @@ section1:toggle("Lemon Dash", false, function(enabled)
                                             local btn = item.Parent
                                             local enabledAttr = btn:GetAttribute("Enabled")
                                             local purchasedAttr = btn:GetAttribute("Purchased")
+                                            local shownAttr = btn:GetAttribute("Shown")
 
-                                            if enabledAttr == true and purchasedAttr == false then
+                                            if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                                 print("🟢 Probeer aankoop:", btn.Name)
                                                 local success = false
 
@@ -361,7 +364,8 @@ section1:toggle("Lemon Dash", false, function(enabled)
                                 if purchaseRemote then
                                     local enabledAttr = mainDash:GetAttribute("Enabled")
                                     local purchasedAttr = mainDash:GetAttribute("Purchased")
-                                    if enabledAttr == true and purchasedAttr == false then
+                                    local shownAttr = mainDash:GetAttribute("Shown")
+                                    if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                         print("🟢 Koop: LemonDash")
                                         local success = false
 
@@ -396,7 +400,7 @@ section1:toggle("Lemon Dash", false, function(enabled)
 end)
 
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY LEMON DEPOT (Enabled + Purchased + Retry + TP)
+-- 🟠 AUTO‑BUY LEMON DEPOT (Enabled + Purchased + Shown + Retry + TP)
 ---------------------------------------------------------
 section1:toggle("Lemon Depot", false, function(enabled)
     print("Auto‑Buy Lemon Depot:", enabled)
@@ -433,8 +437,9 @@ section1:toggle("Lemon Depot", false, function(enabled)
                                             local btn = item.Parent
                                             local enabledAttr = btn:GetAttribute("Enabled")
                                             local purchasedAttr = btn:GetAttribute("Purchased")
+                                            local shownAttr = btn:GetAttribute("Shown")
 
-                                            if enabledAttr == true and purchasedAttr == false then
+                                            if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                                 print("🟢 Probeer aankoop:", btn.Name)
 
                                                 local success = false
@@ -476,8 +481,9 @@ section1:toggle("Lemon Depot", false, function(enabled)
                                 if purchaseRemote then
                                     local enabledAttr = mainDepot:GetAttribute("Enabled")
                                     local purchasedAttr = mainDepot:GetAttribute("Purchased")
+                                    local shownAttr = mainDepot:GetAttribute("Shown")
 
-                                    if enabledAttr == true and purchasedAttr == false then
+                                    if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                         print("🟢 Koop: Lemon Depot")
                                         local success = false
 
@@ -516,7 +522,7 @@ section1:toggle("Lemon Depot", false, function(enabled)
 end)
 
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY HILLS (Enabled + Purchased + Retry + TP)
+-- 🟠 AUTO‑BUY HILLS (Enabled + Purchased + Shown + Retry + TP)
 ---------------------------------------------------------
 section1:toggle("Hills", false, function(enabled)
     print("Auto‑Buy Hills:", enabled)
@@ -547,8 +553,9 @@ section1:toggle("Hills", false, function(enabled)
                                     local btn = item.Parent
                                     local enabledAttr = btn:GetAttribute("Enabled")
                                     local purchasedAttr = btn:GetAttribute("Purchased")
+                                    local shownAttr = btn:GetAttribute("Shown")
 
-                                    if enabledAttr == true and purchasedAttr == false then
+                                    if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                         print("🟢 Probeer aankoop:", btn.Name)
 
                                         local success = false
@@ -588,8 +595,9 @@ section1:toggle("Hills", false, function(enabled)
                                 if purchaseRemote then
                                     local enabledAttr = mainHills:GetAttribute("Enabled")
                                     local purchasedAttr = mainHills:GetAttribute("Purchased")
+                                    local shownAttr = mainHills:GetAttribute("Shown")
 
-                                    if enabledAttr == true and purchasedAttr == false then
+                                    if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                         print("🟢 Koop: Hills")
                                         local success = false
 
@@ -628,7 +636,7 @@ section1:toggle("Hills", false, function(enabled)
 end)
 
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY LEMON TRADING (Enabled + Purchased + Retry + TP)
+-- 🟠 AUTO‑BUY LEMON TRADING (Enabled + Purchased + Shown + Retry + TP)
 ---------------------------------------------------------
 section1:toggle("Lemon Trading", false, function(enabled)
     print("Auto‑Buy Lemon Trading:", enabled)
@@ -665,8 +673,9 @@ section1:toggle("Lemon Trading", false, function(enabled)
                                             local btn = item.Parent
                                             local enabledAttr = btn:GetAttribute("Enabled")
                                             local purchasedAttr = btn:GetAttribute("Purchased")
+                                            local shownAttr = btn:GetAttribute("Shown")
 
-                                            if enabledAttr == true and purchasedAttr == false then
+                                            if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                                 print("🟢 Probeer aankoop:", btn.Name)
 
                                                 local success = false
@@ -708,8 +717,9 @@ section1:toggle("Lemon Trading", false, function(enabled)
                                 if purchaseRemote then
                                     local enabledAttr = mainTrading:GetAttribute("Enabled")
                                     local purchasedAttr = mainTrading:GetAttribute("Purchased")
+                                    local shownAttr = mainTrading:GetAttribute("Shown")
 
-                                    if enabledAttr == true and purchasedAttr == false then
+                                    if enabledAttr == true and purchasedAttr == false and shownAttr == true then
                                         print("🟢 Koop: Lemon Trading")
                                         local success = false
 
