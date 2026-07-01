@@ -848,7 +848,7 @@ section1:label("Auto-Click")
 ---------------------------------------------------------
 -- 🖱️ AUTO‑CLICK INCOME STREAM (Lemon Stand)
 ---------------------------------------------------------
-section1:toggle("Click Income Stream", false, function(enabled)
+section1:toggle("Auto-Click Lemon Stand", false, function(enabled)
     print("Auto-Click Income Stream:", enabled)
 
     if enabled == true then
