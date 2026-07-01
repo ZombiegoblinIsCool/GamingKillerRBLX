@@ -727,6 +727,31 @@ section1:toggle("Auto-Accept Phone Offers", false, function(enabled)
         end)
     end
 end)
+
+section1:label("Auto-Click")
+
+---------------------------------------------------------
+-- 🖱️ AUTO‑CLICK INCOME STREAM (Lemon Stand)
+---------------------------------------------------------
+section1:toggle("Click Income Stream", false, function(enabled)
+    print("Auto-Click Income Stream:", enabled)
+
+    if enabled == true then
+        task.spawn(function()
+            while enabled == true do
+                local Event = PTC.Remotes.WakeIncomeStream
+                pcall(function()
+                    Event:InvokeServer(
+                        "LemonStand"
+                    )
+                end)
+
+                task.wait(0.1)
+            end
+        end)
+    end
+end)
+
 elseif gameId == 17509256499 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
