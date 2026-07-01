@@ -250,7 +250,30 @@ section1:toggle("Lemon Stand", false, function(enabled)
 
                                     if enabledAttr == true and purchasedAttr == false then
                                         print("🟢 Koop: Lemon Stand")
-                                        purchaseRemote:InvokeServer(false)
+                                        local success = false
+
+                                        for attempt = 1, 3 do
+                                            local ok, err = pcall(function()
+                                                purchaseRemote:InvokeServer(false)
+                                            end)
+
+                                            if ok then
+                                                success = true
+                                                print("✅ Gelukt: Lemon Stand")
+                                                break
+                                            else
+                                                warn("⚠️ Error attempt " .. attempt .. " bij Lemon Stand: " .. tostring(err))
+
+                                                if attempt == 2 then
+                                                    if torso then
+                                                        print("📦 Teleport Lemon Stand naar speler")
+                                                        mainStand:PivotTo(torso.CFrame)
+                                                    end
+                                                end
+
+                                                task.wait(0.4)
+                                            end
+                                        end
                                     end
                                 end
                             end
@@ -340,7 +363,26 @@ section1:toggle("Lemon Dash", false, function(enabled)
                                     local purchasedAttr = mainDash:GetAttribute("Purchased")
                                     if enabledAttr == true and purchasedAttr == false then
                                         print("🟢 Koop: LemonDash")
-                                        purchaseRemote:InvokeServer(false)
+                                        local success = false
+
+                                        for attempt = 1, 3 do
+                                            local ok, err = pcall(function()
+                                                purchaseRemote:InvokeServer(false)
+                                            end)
+
+                                            if ok then
+                                                success = true
+                                                print("✅ Gelukt: LemonDash")
+                                                break
+                                            else
+                                                warn("⚠️ Error attempt " .. attempt .. " bij LemonDash: " .. tostring(err))
+                                                if attempt == 2 and torso then
+                                                    print("📦 Teleport LemonDash naar speler")
+                                                    mainDash:PivotTo(torso.CFrame)
+                                                end
+                                                task.wait(0.4)
+                                            end
+                                        end
                                     end
                                 end
                             end
@@ -437,7 +479,28 @@ section1:toggle("Lemon Depot", false, function(enabled)
 
                                     if enabledAttr == true and purchasedAttr == false then
                                         print("🟢 Koop: Lemon Depot")
-                                        purchaseRemote:InvokeServer(false)
+                                        local success = false
+
+                                        for attempt = 1, 3 do
+                                            local ok, err = pcall(function()
+                                                purchaseRemote:InvokeServer(false)
+                                            end)
+
+                                            if ok then
+                                                success = true
+                                                print("✅ Gelukt: Lemon Depot")
+                                                break
+                                            else
+                                                warn("⚠️ Error attempt " .. attempt .. " bij Lemon Depot: " .. tostring(err))
+
+                                                if attempt == 2 and torso then
+                                                    print("📦 Teleport Lemon Depot naar speler")
+                                                    mainDepot:PivotTo(torso.CFrame)
+                                                end
+
+                                                task.wait(0.4)
+                                            end
+                                        end
                                     end
                                 end
                             end
@@ -528,7 +591,28 @@ section1:toggle("Hills", false, function(enabled)
 
                                     if enabledAttr == true and purchasedAttr == false then
                                         print("🟢 Koop: Hills")
-                                        purchaseRemote:InvokeServer(false)
+                                        local success = false
+
+                                        for attempt = 1, 3 do
+                                            local ok, err = pcall(function()
+                                                purchaseRemote:InvokeServer(false)
+                                            end)
+
+                                            if ok then
+                                                success = true
+                                                print("✅ Gelukt: Hills")
+                                                break
+                                            else
+                                                warn("⚠️ Error attempt " .. attempt .. " bij Hills: " .. tostring(err))
+
+                                                if attempt == 2 and torso then
+                                                    print("📦 Teleport Hills naar speler")
+                                                    mainHills:PivotTo(torso.CFrame)
+                                                end
+
+                                                task.wait(0.4)
+                                            end
+                                        end
                                     end
                                 end
                             end
@@ -627,7 +711,28 @@ section1:toggle("Lemon Trading", false, function(enabled)
 
                                     if enabledAttr == true and purchasedAttr == false then
                                         print("🟢 Koop: Lemon Trading")
-                                        purchaseRemote:InvokeServer(false)
+                                        local success = false
+
+                                        for attempt = 1, 3 do
+                                            local ok, err = pcall(function()
+                                                purchaseRemote:InvokeServer(false)
+                                            end)
+
+                                            if ok then
+                                                success = true
+                                                print("✅ Gelukt: Lemon Trading")
+                                                break
+                                            else
+                                                warn("⚠️ Error attempt " .. attempt .. " bij Lemon Trading: " .. tostring(err))
+
+                                                if attempt == 2 and torso then
+                                                    print("📦 Teleport Lemon Trading naar speler")
+                                                    mainTrading:PivotTo(torso.CFrame)
+                                                end
+
+                                                task.wait(0.4)
+                                            end
+                                        end
                                     end
                                 end
                             end
@@ -733,7 +838,7 @@ section1:label("Auto-Click")
 ---------------------------------------------------------
 -- 🖱️ AUTO‑CLICK INCOME STREAM (Lemon Stand)
 ---------------------------------------------------------
-section1:toggle("auto-click Lemon Stand!", false, function(enabled)
+section1:toggle("Click Income Stream", false, function(enabled)
     print("Auto-Click Income Stream:", enabled)
 
     if enabled == true then
