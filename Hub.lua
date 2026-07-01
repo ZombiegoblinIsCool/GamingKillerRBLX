@@ -4,13 +4,13 @@
          -- \_____/  |____________|
     GamingKiller™️ The Exploit for Killing Games
 
-        *reccomended supported games only
+        *recommended supported games only
              cuz only they work :p*
 
 
-QUICK QUIDE:
+QUICK GUIDE:
     1. use the buttons under the window to open a script menu 
-    2. to minimize/reopen the window kress K on your keyboard
+    2. to minimize/reopen the window press K on your keyboard
     3. If you want more supported games ask for them in the comments (NO BIG GAMES WITH ANTI-CHEAT!)
 ]]
 
@@ -23,10 +23,13 @@ local gameId = game.PlaceId
 print("Game Name:", gameName)
 print("Game ID:", gameId)
 
+-- =========================================================
+-- ASMR Tower
+-- =========================================================
 if gameId == 111363135577981 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
-    section1 = window:tab("Complete", "rbxassetid://109121102062195")
+    local section1 = window:tab("Complete", "rbxassetid://109121102062195")
     section1:label("Auto-Complete:")
 
     section1:button("Complete full game!", function()
@@ -35,6 +38,20 @@ if gameId == 111363135577981 then
         char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
     end)
 
+    section1:label("Stage Teleport:")
+    section1:slider("Teleport To Stage", 1, 61, 50, function(num)
+        local cp = game.Workspace.Map.FinishLobby.Checkpoints:FindFirstChild(tostring(num))
+        if cp and cp:FindFirstChild("Hitbox") then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            char:WaitForChild("HumanoidRootPart").CFrame = cp.Hitbox.CFrame
+        else
+            warn("Checkpoint " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Mega Obby Fun
+-- =========================================================
 elseif gameId == 16518256559 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
@@ -47,6 +64,20 @@ elseif gameId == 16518256559 then
         char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
     end)
 
+    section1:label("Stage Teleport:")
+    section1:slider("Teleport To Stage", 1, 150, 50, function(num)
+        local cp = game.Workspace.Checkpoints:FindFirstChild(tostring(num))
+        if cp then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            char:WaitForChild("HumanoidRootPart").CFrame = cp.CFrame
+        else
+            warn("Checkpoint " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Troll Obby (slow one-by-one complete by default)
+-- =========================================================
 elseif gameId == 13189735542 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
@@ -66,7 +97,7 @@ elseif gameId == 13189735542 then
             if cp then table.insert(checkpoints, cp) end
         end
 
-        -- Teleport door alle checkpoints
+        -- Teleport through all checkpoints
         task.spawn(function()
             for _, cp in ipairs(checkpoints) do
                 hrp.CFrame = cp.CFrame
@@ -74,6 +105,21 @@ elseif gameId == 13189735542 then
             end
         end)
     end)
+
+    section1:label("Stage Teleport (skip straight to a stage):")
+    section1:slider("Teleport To Stage", 1, 106, 50, function(num)
+        local cp = game.Workspace.Checkpoints:FindFirstChild(tostring(num))
+        if cp then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            char:WaitForChild("HumanoidRootPart").CFrame = cp.CFrame
+        else
+            warn("Checkpoint " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Obby But You Can't Jump
+-- =========================================================
 elseif gameId == 13326256431 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
@@ -85,6 +131,21 @@ elseif gameId == 13326256431 then
         local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
         char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
     end)
+
+    section1:label("Stage Teleport:")
+    section1:slider("Teleport To Stage", 1, 48, 24, function(num)
+        local cp = game.Workspace.Checkpoints:FindFirstChild(tostring(num))
+        if cp then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            char:WaitForChild("HumanoidRootPart").CFrame = cp.CFrame
+        else
+            warn("Checkpoint " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Mrbeast's Deadly Obby (multi-step complete)
+-- =========================================================
 elseif gameId == 88264996806108 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
@@ -92,45 +153,70 @@ elseif gameId == 88264996806108 then
     section1:label("Auto-Complete:")
 
     section1:button("Complete full game!", function()
-        local TpTo = game.Workspace.Spawns.Locations["4"]
+        local locations = game.Workspace.Spawns.Locations
         local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-        char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
-        task.wait(1)
-        local TpTo = game.Workspace.Spawns.Locations["9"]
-        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-        char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
-        task.wait(1)
-        local TpTo = game.Workspace.Spawns.Locations["13"]
-        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-        char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
-        task.wait(1)
-        local TpTo = game.Workspace.Spawns.Locations["15"]
-        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-        char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
-        task.wait(1)
-        local TpTo = game.Workspace.Spawns.Locations["17"]
-        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-        char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
+        local hrp = char:WaitForChild("HumanoidRootPart")
+
+        local steps = {"4", "9", "13", "15", "17"}
+        for _, stageName in ipairs(steps) do
+            local target = locations:FindFirstChild(stageName)
+            if target then
+                hrp.CFrame = target.CFrame
+                task.wait(1)
+            end
+        end
+
         task.wait(5)
-        if game.Workspace.Spawns.Locations["19"] then
-            local TpTo = game.Workspace.Spawns.Locations["19"]
-            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
-            char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
+
+        local final = locations:FindFirstChild("19")
+        if final then
+            hrp.CFrame = final.CFrame
         end
     end)
+
+    section1:label("Stage Teleport:")
+    section1:slider("Teleport To Stage", 1, 19, 9, function(num)
+        local target = game.Workspace.Spawns.Locations:FindFirstChild(tostring(num))
+        if target then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            char:WaitForChild("HumanoidRootPart").CFrame = target.CFrame
+        else
+            warn("Spawn " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Easy Obby Fun
+-- =========================================================
 elseif gameId == 16225943017 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
     local section1 = window:tab("Complete", "rbxassetid://109121102062195")
+    section1:label("Auto-Complete:")
 
     section1:button("Complete full game!", function()
         local TpTo = game.Workspace.Checkpoints["112"]
         local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
         char:WaitForChild("HumanoidRootPart").CFrame = TpTo.CFrame
     end)
+
+    section1:label("Stage Teleport:")
+    section1:slider("Teleport To Stage", 1, 112, 50, function(num)
+        local cp = game.Workspace.Checkpoints:FindFirstChild(tostring(num))
+        if cp then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            char:WaitForChild("HumanoidRootPart").CFrame = cp.CFrame
+        else
+            warn("Checkpoint " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Sell Lemons (Tycoon) — Auto-Buy + Upgrades + Auto-Click
+-- =========================================================
 elseif gameId == 79268393072444 then
     ---------------------------------------------------------
-    -- 🔍 Vind jouw tycoon automatisch en sla op in PTC
+    -- 🔍 Find the player's tycoon automatically and store it in PTC
     ---------------------------------------------------------
     local player = game.Players.LocalPlayer
     local PTC = nil
@@ -148,11 +234,32 @@ elseif gameId == 79268393072444 then
     end
 
     if not PTC then
-        warn("❌ Geen tycoon gevonden voor speler:", player.Name)
+        warn("❌ No tycoon found for player:", player.Name)
         return
     end
 
-    print("✅ Jouw tycoon is gevonden:", PTC.Name)
+    print("✅ Your tycoon has been found:", PTC.Name)
+
+    ---------------------------------------------------------
+    -- 🔧 Helper: teleport a Model (or Part) to a CFrame
+    --    Buttons are Models → PivotTo needs a PrimaryPart
+    ---------------------------------------------------------
+    local function tpModelTo(obj, targetCFrame)
+        if obj:IsA("Model") then
+            if not obj.PrimaryPart then
+                local part = obj:FindFirstChildWhichIsA("BasePart")
+                if part then
+                    obj.PrimaryPart = part
+                else
+                    warn("❌ No BasePart in model:", obj.Name)
+                    return
+                end
+            end
+        end
+        pcall(function()
+            obj:PivotTo(targetCFrame)
+        end)
+    end
 
     ---------------------------------------------------------
     -- 🪟 CalmLib UI
@@ -162,12 +269,13 @@ elseif gameId == 79268393072444 then
     section1:label("Auto Buy System:")
 
 ---------------------------------------------------------
--- 🟡 AUTO‑BUY LEMON STAND (Enabled + Purchased + Shown + Retry + TP)
+-- 🟡 AUTO‑BUY LEMON STAND
+--   RemoteFunction:InvokeServer(false)
 ---------------------------------------------------------
 section1:toggle("Lemon Stand", false, function(enabled)
     print("Auto‑Buy Lemon Stand:", enabled)
 
-    -- torso finder (werkt voor R6 & R15)
+    -- torso finder (works for R6 & R15)
     local function getTorso(char)
         return char:FindFirstChild("HumanoidRootPart")
             or char:FindFirstChild("UpperTorso")
@@ -187,7 +295,7 @@ section1:toggle("Lemon Stand", false, function(enabled)
                         local buttons = lemonStand:FindFirstChild("Buttons")
                         if buttons and buttons:GetAttribute("Enabled") == true then
 
-                            -- alle subfolders
+                            -- all subfolders
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
@@ -202,9 +310,9 @@ section1:toggle("Lemon Stand", false, function(enabled)
                                             local purchasedAttr = btn:GetAttribute("Purchased")
                                             local shownAttr = btn:GetAttribute("Shown")
 
-                                            -- alleen kopen als Enabled = true en Purchased = false en Shown = true
+                                            -- only buy if Enabled = true and Purchased = false and Shown = true
                                             if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                                print("🟢 Probeer aankoop:", btn.Name)
+                                                print("🟢 Try purchase:", btn.Name)
 
                                                 local success = false
 
@@ -215,16 +323,16 @@ section1:toggle("Lemon Stand", false, function(enabled)
 
                                                     if ok then
                                                         success = true
-                                                        print("✅ Gelukt:", btn.Name)
+                                                        print("✅ Success:", btn.Name)
                                                         break
                                                     else
-                                                        warn("⚠️ Error attempt " .. attempt .. " bij " .. btn.Name .. ": " .. tostring(err))
+                                                        warn("⚠️ Error attempt " .. attempt .. " on " .. btn.Name .. ": " .. tostring(err))
 
-                                                        -- na 2 errors → teleport button naar speler
+                                                        -- after 2 errors → teleport button to player
                                                         if attempt == 2 then
                                                             if torso then
-                                                                print("📦 Teleport button naar speler:", btn.Name)
-                                                                btn:PivotTo(torso.CFrame)
+                                                                print("📦 Teleport button to player:", btn.Name)
+                                                                tpModelTo(btn, torso.CFrame)
                                                             end
                                                         end
 
@@ -241,17 +349,17 @@ section1:toggle("Lemon Stand", false, function(enabled)
                                 end
                             end
 
-                            -- koop de losse Lemon Stand zelf
+                            -- buy the Lemon Stand itself
                             local mainStand = buttons:FindFirstChild("Lemon Stand")
                             if mainStand then
                                 local purchaseRemote = mainStand:FindFirstChild("Purchase")
-                                if purchaseRemote then
+                                if purchaseRemote and purchaseRemote:IsA("RemoteFunction") then
                                     local enabledAttr = mainStand:GetAttribute("Enabled")
                                     local purchasedAttr = mainStand:GetAttribute("Purchased")
                                     local shownAttr = mainStand:GetAttribute("Shown")
 
                                     if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                        print("🟢 Koop: Lemon Stand")
+                                        print("🟢 Buy: Lemon Stand")
                                         local success = false
 
                                         for attempt = 1, 3 do
@@ -261,15 +369,15 @@ section1:toggle("Lemon Stand", false, function(enabled)
 
                                             if ok then
                                                 success = true
-                                                print("✅ Gelukt: Lemon Stand")
+                                                print("✅ Success: Lemon Stand")
                                                 break
                                             else
-                                                warn("⚠️ Error attempt " .. attempt .. " bij Lemon Stand: " .. tostring(err))
+                                                warn("⚠️ Error attempt " .. attempt .. " on Lemon Stand: " .. tostring(err))
 
                                                 if attempt == 2 then
                                                     if torso then
-                                                        print("📦 Teleport Lemon Stand naar speler")
-                                                        mainStand:PivotTo(torso.CFrame)
+                                                        print("📦 Teleport Lemon Stand to player")
+                                                        tpModelTo(mainStand, torso.CFrame)
                                                     end
                                                 end
 
@@ -289,8 +397,10 @@ section1:toggle("Lemon Stand", false, function(enabled)
         end)
     end
 end)
+
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY LEMON DASH (Enabled + Purchased + Shown + Retry + TP)
+-- 🟠 AUTO‑BUY LEMON DASH
+--   RemoteFunction:InvokeServer(false)
 ---------------------------------------------------------
 section1:toggle("Lemon Dash", false, function(enabled)
     print("Auto‑Buy Lemon Dash:", enabled)
@@ -326,7 +436,7 @@ section1:toggle("Lemon Dash", false, function(enabled)
                                             local shownAttr = btn:GetAttribute("Shown")
 
                                             if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                                print("🟢 Probeer aankoop:", btn.Name)
+                                                print("🟢 Try purchase:", btn.Name)
                                                 local success = false
 
                                                 for attempt = 1, 3 do
@@ -336,13 +446,13 @@ section1:toggle("Lemon Dash", false, function(enabled)
 
                                                     if ok then
                                                         success = true
-                                                        print("✅ Gelukt:", btn.Name)
+                                                        print("✅ Success:", btn.Name)
                                                         break
                                                     else
-                                                        warn("⚠️ Error attempt " .. attempt .. " bij " .. btn.Name .. ": " .. tostring(err))
+                                                        warn("⚠️ Error attempt " .. attempt .. " on " .. btn.Name .. ": " .. tostring(err))
                                                         if attempt == 2 and torso then
-                                                            print("📦 Teleport button naar speler:", btn.Name)
-                                                            btn:PivotTo(torso.CFrame)
+                                                            print("📦 Teleport button to player:", btn.Name)
+                                                            tpModelTo(btn, torso.CFrame)
                                                         end
                                                         task.wait(0.4)
                                                     end
@@ -357,16 +467,16 @@ section1:toggle("Lemon Dash", false, function(enabled)
                                 end
                             end
 
-                            -- Koop de losse LemonDash zelf
+                            -- buy the LemonDash itself
                             local mainDash = buttons:FindFirstChild("LemonDash")
                             if mainDash then
                                 local purchaseRemote = mainDash:FindFirstChild("Purchase")
-                                if purchaseRemote then
+                                if purchaseRemote and purchaseRemote:IsA("RemoteFunction") then
                                     local enabledAttr = mainDash:GetAttribute("Enabled")
                                     local purchasedAttr = mainDash:GetAttribute("Purchased")
                                     local shownAttr = mainDash:GetAttribute("Shown")
                                     if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                        print("🟢 Koop: LemonDash")
+                                        print("🟢 Buy: LemonDash")
                                         local success = false
 
                                         for attempt = 1, 3 do
@@ -376,13 +486,13 @@ section1:toggle("Lemon Dash", false, function(enabled)
 
                                             if ok then
                                                 success = true
-                                                print("✅ Gelukt: LemonDash")
+                                                print("✅ Success: LemonDash")
                                                 break
                                             else
-                                                warn("⚠️ Error attempt " .. attempt .. " bij LemonDash: " .. tostring(err))
+                                                warn("⚠️ Error attempt " .. attempt .. " on LemonDash: " .. tostring(err))
                                                 if attempt == 2 and torso then
-                                                    print("📦 Teleport LemonDash naar speler")
-                                                    mainDash:PivotTo(torso.CFrame)
+                                                    print("📦 Teleport LemonDash to player")
+                                                    tpModelTo(mainDash, torso.CFrame)
                                                 end
                                                 task.wait(0.4)
                                             end
@@ -400,7 +510,8 @@ section1:toggle("Lemon Dash", false, function(enabled)
 end)
 
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY LEMON DEPOT (Enabled + Purchased + Shown + Retry + TP)
+-- 🟠 AUTO‑BUY LEMON DEPOT
+--   RemoteFunction:InvokeServer(false)
 ---------------------------------------------------------
 section1:toggle("Lemon Depot", false, function(enabled)
     print("Auto‑Buy Lemon Depot:", enabled)
@@ -424,7 +535,7 @@ section1:toggle("Lemon Depot", false, function(enabled)
                         local buttons = lemonDepot:FindFirstChild("Buttons")
                         if buttons and buttons:GetAttribute("Enabled") == true then
 
-                            -- alle subfolders (Depot heeft overal iets)
+                            -- all subfolders (Depot has items in all of them)
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
@@ -440,7 +551,7 @@ section1:toggle("Lemon Depot", false, function(enabled)
                                             local shownAttr = btn:GetAttribute("Shown")
 
                                             if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                                print("🟢 Probeer aankoop:", btn.Name)
+                                                print("🟢 Try purchase:", btn.Name)
 
                                                 local success = false
 
@@ -451,14 +562,14 @@ section1:toggle("Lemon Depot", false, function(enabled)
 
                                                     if ok then
                                                         success = true
-                                                        print("✅ Gelukt:", btn.Name)
+                                                        print("✅ Success:", btn.Name)
                                                         break
                                                     else
-                                                        warn("⚠️ Error attempt " .. attempt .. " bij " .. btn.Name .. ": " .. tostring(err))
+                                                        warn("⚠️ Error attempt " .. attempt .. " on " .. btn.Name .. ": " .. tostring(err))
 
                                                         if attempt == 2 and torso then
-                                                            print("📦 Teleport button naar speler:", btn.Name)
-                                                            btn:PivotTo(torso.CFrame)
+                                                            print("📦 Teleport button to player:", btn.Name)
+                                                            tpModelTo(btn, torso.CFrame)
                                                         end
 
                                                         task.wait(0.4)
@@ -474,17 +585,17 @@ section1:toggle("Lemon Depot", false, function(enabled)
                                 end
                             end
 
-                            -- Koop de losse Lemon Depot zelf
+                            -- buy the Lemon Depot itself
                             local mainDepot = buttons:FindFirstChild("Lemon Depot")
                             if mainDepot then
                                 local purchaseRemote = mainDepot:FindFirstChild("Purchase")
-                                if purchaseRemote then
+                                if purchaseRemote and purchaseRemote:IsA("RemoteFunction") then
                                     local enabledAttr = mainDepot:GetAttribute("Enabled")
                                     local purchasedAttr = mainDepot:GetAttribute("Purchased")
                                     local shownAttr = mainDepot:GetAttribute("Shown")
 
                                     if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                        print("🟢 Koop: Lemon Depot")
+                                        print("🟢 Buy: Lemon Depot")
                                         local success = false
 
                                         for attempt = 1, 3 do
@@ -494,14 +605,14 @@ section1:toggle("Lemon Depot", false, function(enabled)
 
                                             if ok then
                                                 success = true
-                                                print("✅ Gelukt: Lemon Depot")
+                                                print("✅ Success: Lemon Depot")
                                                 break
                                             else
-                                                warn("⚠️ Error attempt " .. attempt .. " bij Lemon Depot: " .. tostring(err))
+                                                warn("⚠️ Error attempt " .. attempt .. " on Lemon Depot: " .. tostring(err))
 
                                                 if attempt == 2 and torso then
-                                                    print("📦 Teleport Lemon Depot naar speler")
-                                                    mainDepot:PivotTo(torso.CFrame)
+                                                    print("📦 Teleport Lemon Depot to player")
+                                                    tpModelTo(mainDepot, torso.CFrame)
                                                 end
 
                                                 task.wait(0.4)
@@ -522,7 +633,8 @@ section1:toggle("Lemon Depot", false, function(enabled)
 end)
 
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY HILLS (Enabled + Purchased + Shown + Retry + TP)
+-- 🟠 AUTO‑BUY HILLS
+--   RemoteFunction:InvokeServer(false)
 ---------------------------------------------------------
 section1:toggle("Hills", false, function(enabled)
     print("Auto‑Buy Hills:", enabled)
@@ -546,7 +658,7 @@ section1:toggle("Hills", false, function(enabled)
                         local buttons = hills:FindFirstChild("Buttons")
                         if buttons and buttons:GetAttribute("Enabled") == true then
 
-                            -- Hills heeft GEEN subfolders → alles zit direct in Buttons
+                            -- Hills has NO subfolders → everything is directly in Buttons
                             for _, item in ipairs(buttons:GetDescendants()) do
                                 if item:IsA("RemoteFunction") and item.Name == "Purchase" then
 
@@ -556,7 +668,7 @@ section1:toggle("Hills", false, function(enabled)
                                     local shownAttr = btn:GetAttribute("Shown")
 
                                     if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                        print("🟢 Probeer aankoop:", btn.Name)
+                                        print("🟢 Try purchase:", btn.Name)
 
                                         local success = false
 
@@ -567,14 +679,14 @@ section1:toggle("Hills", false, function(enabled)
 
                                             if ok then
                                                 success = true
-                                                print("✅ Gelukt:", btn.Name)
+                                                print("✅ Success:", btn.Name)
                                                 break
                                             else
-                                                warn("⚠️ Error attempt " .. attempt .. " bij " .. btn.Name .. ": " .. tostring(err))
+                                                warn("⚠️ Error attempt " .. attempt .. " on " .. btn.Name .. ": " .. tostring(err))
 
                                                 if attempt == 2 and torso then
-                                                    print("📦 Teleport button naar speler:", btn.Name)
-                                                    btn:PivotTo(torso.CFrame)
+                                                    print("📦 Teleport button to player:", btn.Name)
+                                                    tpModelTo(btn, torso.CFrame)
                                                 end
 
                                                 task.wait(0.4)
@@ -588,17 +700,17 @@ section1:toggle("Hills", false, function(enabled)
                                 end
                             end
 
-                            -- Koop de losse Hills zelf
+                            -- buy Hills itself
                             local mainHills = buttons:FindFirstChild("Hills")
                             if mainHills then
                                 local purchaseRemote = mainHills:FindFirstChild("Purchase")
-                                if purchaseRemote then
+                                if purchaseRemote and purchaseRemote:IsA("RemoteFunction") then
                                     local enabledAttr = mainHills:GetAttribute("Enabled")
                                     local purchasedAttr = mainHills:GetAttribute("Purchased")
                                     local shownAttr = mainHills:GetAttribute("Shown")
 
                                     if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                        print("🟢 Koop: Hills")
+                                        print("🟢 Buy: Hills")
                                         local success = false
 
                                         for attempt = 1, 3 do
@@ -608,14 +720,14 @@ section1:toggle("Hills", false, function(enabled)
 
                                             if ok then
                                                 success = true
-                                                print("✅ Gelukt: Hills")
+                                                print("✅ Success: Hills")
                                                 break
                                             else
-                                                warn("⚠️ Error attempt " .. attempt .. " bij Hills: " .. tostring(err))
+                                                warn("⚠️ Error attempt " .. attempt .. " on Hills: " .. tostring(err))
 
                                                 if attempt == 2 and torso then
-                                                    print("📦 Teleport Hills naar speler")
-                                                    mainHills:PivotTo(torso.CFrame)
+                                                    print("📦 Teleport Hills to player")
+                                                    tpModelTo(mainHills, torso.CFrame)
                                                 end
 
                                                 task.wait(0.4)
@@ -636,7 +748,8 @@ section1:toggle("Hills", false, function(enabled)
 end)
 
 ---------------------------------------------------------
--- 🟠 AUTO‑BUY LEMON TRADING (Enabled + Purchased + Shown + Retry + TP)
+-- 🟠 AUTO‑BUY LEMON TRADING
+--   RemoteFunction:InvokeServer(false)
 ---------------------------------------------------------
 section1:toggle("Lemon Trading", false, function(enabled)
     print("Auto‑Buy Lemon Trading:", enabled)
@@ -660,7 +773,7 @@ section1:toggle("Lemon Trading", false, function(enabled)
                         local buttons = lemonTrading:FindFirstChild("Buttons")
                         if buttons and buttons:GetAttribute("Enabled") == true then
 
-                            -- Lemon Trading heeft overal items
+                            -- Lemon Trading has items in all subfolders
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
@@ -676,7 +789,7 @@ section1:toggle("Lemon Trading", false, function(enabled)
                                             local shownAttr = btn:GetAttribute("Shown")
 
                                             if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                                print("🟢 Probeer aankoop:", btn.Name)
+                                                print("🟢 Try purchase:", btn.Name)
 
                                                 local success = false
 
@@ -687,14 +800,14 @@ section1:toggle("Lemon Trading", false, function(enabled)
 
                                                     if ok then
                                                         success = true
-                                                        print("✅ Gelukt:", btn.Name)
+                                                        print("✅ Success:", btn.Name)
                                                         break
                                                     else
-                                                        warn("⚠️ Error attempt " .. attempt .. " bij " .. btn.Name .. ": " .. tostring(err))
+                                                        warn("⚠️ Error attempt " .. attempt .. " on " .. btn.Name .. ": " .. tostring(err))
 
                                                         if attempt == 2 and torso then
-                                                            print("📦 Teleport button naar speler:", btn.Name)
-                                                            btn:PivotTo(torso.CFrame)
+                                                            print("📦 Teleport button to player:", btn.Name)
+                                                            tpModelTo(btn, torso.CFrame)
                                                         end
 
                                                         task.wait(0.4)
@@ -710,17 +823,17 @@ section1:toggle("Lemon Trading", false, function(enabled)
                                 end
                             end
 
-                            -- Koop de losse Lemon Trading zelf
+                            -- buy Lemon Trading itself
                             local mainTrading = buttons:FindFirstChild("Lemon Trading")
                             if mainTrading then
                                 local purchaseRemote = mainTrading:FindFirstChild("Purchase")
-                                if purchaseRemote then
+                                if purchaseRemote and purchaseRemote:IsA("RemoteFunction") then
                                     local enabledAttr = mainTrading:GetAttribute("Enabled")
                                     local purchasedAttr = mainTrading:GetAttribute("Purchased")
                                     local shownAttr = mainTrading:GetAttribute("Shown")
 
                                     if enabledAttr == true and purchasedAttr == false and shownAttr == true then
-                                        print("🟢 Koop: Lemon Trading")
+                                        print("🟢 Buy: Lemon Trading")
                                         local success = false
 
                                         for attempt = 1, 3 do
@@ -730,14 +843,14 @@ section1:toggle("Lemon Trading", false, function(enabled)
 
                                             if ok then
                                                 success = true
-                                                print("✅ Gelukt: Lemon Trading")
+                                                print("✅ Success: Lemon Trading")
                                                 break
                                             else
-                                                warn("⚠️ Error attempt " .. attempt .. " bij Lemon Trading: " .. tostring(err))
+                                                warn("⚠️ Error attempt " .. attempt .. " on Lemon Trading: " .. tostring(err))
 
                                                 if attempt == 2 and torso then
-                                                    print("📦 Teleport Lemon Trading naar speler")
-                                                    mainTrading:PivotTo(torso.CFrame)
+                                                    print("📦 Teleport Lemon Trading to player")
+                                                    tpModelTo(mainTrading, torso.CFrame)
                                                 end
 
                                                 task.wait(0.4)
@@ -797,9 +910,11 @@ section1:toggle("Upgrade LemonDash", false, function(enabled)
         task.spawn(function()
             while enabled == true do
                 local Event = PTC.Purchases.LemonDash.LemonDash.LemonDash.Upgrade
-                Event:InvokeServer(
-                    1
-                )
+                if Event and Event:IsA("RemoteFunction") then
+                    pcall(function()
+                        Event:InvokeServer(1)
+                    end)
+                end
 
                 task.wait(0.1)
             end
@@ -814,9 +929,11 @@ section1:toggle("Upgrade Lemon Depot", false, function(enabled)
         task.spawn(function()
             while enabled == true do
                 local Event = PTC.Purchases["Lemon Depot"]["Lemon Depot"]["Lemon Depot"].Upgrade
-                Event:InvokeServer(
-                    1
-                )
+                if Event and Event:IsA("RemoteFunction") then
+                    pcall(function()
+                        Event:InvokeServer(1)
+                    end)
+                end
 
                 task.wait(0.1)
             end
@@ -833,9 +950,11 @@ section1:toggle("Auto-Accept Phone Offers", false, function(enabled)
         task.spawn(function()
             while enabled == true do
                 local Event = workspace.Tycoon2.Remotes.PhoneOffer
-                Event:FireServer(
-                    "Accept"
-                )
+                if Event then
+                    pcall(function()
+                        Event:FireServer("Accept")
+                    end)
+                end
 
                 task.wait(0.1)
             end
@@ -855,11 +974,11 @@ section1:toggle("Auto-Click Lemon Stand", false, function(enabled)
         task.spawn(function()
             while enabled == true do
                 local Event = PTC.Remotes.WakeIncomeStream
-                pcall(function()
-                    Event:InvokeServer(
-                        "LemonStand"
-                    )
-                end)
+                if Event and Event:IsA("RemoteFunction") then
+                    pcall(function()
+                        Event:InvokeServer("LemonStand")
+                    end)
+                end
 
                 task.wait(0.1)
             end
@@ -867,6 +986,9 @@ section1:toggle("Auto-Click Lemon Stand", false, function(enabled)
     end
 end)
 
+-- =========================================================
+-- Boba Tea Obby (slow one-by-one complete by default)
+-- =========================================================
 elseif gameId == 17509256499 then
     local window = CalmLib:win("GamingKiller (Game: " .. gameName .. ")")
 
@@ -881,7 +1003,7 @@ elseif gameId == 17509256499 then
         local checkpointsFolder = game.Workspace:WaitForChild("Checkpoints")
         local checkpoints = {}
 
-        -- Verzamel 1 → 100 checkpoints (Models of Parts)
+        -- Collect 1 → 100 checkpoints (Models or Parts)
         for i = 1, 100 do
             local cp = checkpointsFolder:FindFirstChild(tostring(i))
             if cp then
@@ -889,15 +1011,15 @@ elseif gameId == 17509256499 then
             end
         end
 
-        -- Teleport door alle checkpoints
+        -- Teleport through all checkpoints
         task.spawn(function()
             for _, cp in ipairs(checkpoints) do
 
-                -- Als checkpoint een Model is → gebruik PrimaryPart
+                -- If checkpoint is a Model → use PrimaryPart
                 if cp:IsA("Model") then
                     local pp = cp.PrimaryPart
 
-                    -- Als Model geen PrimaryPart heeft → kies automatisch een part
+                    -- If Model has no PrimaryPart → pick a part automatically
                     if not pp then
                         pp = cp:FindFirstChildWhichIsA("BasePart")
                     end
@@ -905,10 +1027,10 @@ elseif gameId == 17509256499 then
                     if pp then
                         hrp.CFrame = pp.CFrame + Vector3.new(0, 2, 0)
                     else
-                        warn("Checkpoint " .. cp.Name .. " heeft geen teleportbare parts!")
+                        warn("Checkpoint " .. cp.Name .. " has no teleportable parts!")
                     end
 
-                -- Als checkpoint een Part is → direct teleport
+                -- If checkpoint is a Part → direct teleport
                 elseif cp:IsA("BasePart") then
                     hrp.CFrame = cp.CFrame + Vector3.new(0, 2, 0)
                 end
@@ -917,6 +1039,29 @@ elseif gameId == 17509256499 then
             end
         end)
     end)
+
+    section1:label("Stage Teleport (skip straight to a stage):")
+    section1:slider("Teleport To Stage", 1, 100, 50, function(num)
+        local cp = game.Workspace.Checkpoints:FindFirstChild(tostring(num))
+        if cp then
+            local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+            local hrp = char:WaitForChild("HumanoidRootPart")
+            if cp:IsA("Model") then
+                local pp = cp.PrimaryPart or cp:FindFirstChildWhichIsA("BasePart")
+                if pp then
+                    hrp.CFrame = pp.CFrame + Vector3.new(0, 2, 0)
+                end
+            elseif cp:IsA("BasePart") then
+                hrp.CFrame = cp.CFrame + Vector3.new(0, 2, 0)
+            end
+        else
+            warn("Checkpoint " .. num .. " not found!")
+        end
+    end)
+
+-- =========================================================
+-- Unsupported game → list supported games
+-- =========================================================
 else
     local window = CalmLib:win("GamingKiller (Unsupported game!)")
 
@@ -926,61 +1071,52 @@ else
 
     section1:button("ASMR Tower", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 111363135577981 -- vervang met jouw gameID
-
+        local targetPlaceId = 111363135577981 -- ASMR Tower
         TeleportService:Teleport(targetPlaceId)
     end)
-    -- 16518256559
+
     section1:button("Mega Obby Fun", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 16518256559 -- vervang met jouw gameID
-
+        local targetPlaceId = 16518256559 -- Mega Obby Fun
         TeleportService:Teleport(targetPlaceId)
     end)
-    -- 13189735542
+
     section1:button("Troll Obby", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 13189735542 -- vervang met jouw gameID
-
+        local targetPlaceId = 13189735542 -- Troll Obby
         TeleportService:Teleport(targetPlaceId)
     end)
-    -- Obby But You Can't Jump
-    -- 13326256431
+
     section1:button("Obby But You Can't Jump", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 13326256431 -- vervang met jouw gameID
-
+        local targetPlaceId = 13326256431 -- Obby But You Can't Jump
         TeleportService:Teleport(targetPlaceId)
     end)
-    -- Mrbeast's Deadly Obby
-    -- 88264996806108
+
     section1:button("Mrbeast's Deadly Obby", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 88264996806108 -- vervang met jouw gameID
-
+        local targetPlaceId = 88264996806108 -- Mrbeast's Deadly Obby
         TeleportService:Teleport(targetPlaceId)
     end)
-    -- Easy Obby Fun
-    -- 16225943017
+
     section1:button("Easy Obby Fun", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 16225943017 -- vervang met jouw gameID
-
+        local targetPlaceId = 16225943017 -- Easy Obby Fun
         TeleportService:Teleport(targetPlaceId)
     end)
+
     section1:button("Sell Lemons 🍋", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 79268393072444 -- vervang met jouw gameID
-
+        local targetPlaceId = 79268393072444 -- Sell Lemons
         TeleportService:Teleport(targetPlaceId)
     end)
-    -- 17509256499
+
     section1:button("Boba Tea Obby!", function()
         local TeleportService = game:GetService("TeleportService")
-        local targetPlaceId = 17509256499 -- vervang met jouw gameID
-
+        local targetPlaceId = 17509256499 -- Boba Tea Obby
         TeleportService:Teleport(targetPlaceId)
     end)
+
     error("This game is not supported by GamingKiller! (Maybe request it in the comments) Game name: " .. gameName)
 end
 
