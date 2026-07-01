@@ -174,11 +174,9 @@ section1:toggle("Lemon Stand", false, function(enabled)
             or char:FindFirstChild("Torso")
     end
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local char = player.Character or player.CharacterAdded:Wait()
                 local torso = getTorso(char)
 
@@ -193,14 +191,10 @@ section1:toggle("Lemon Stand", false, function(enabled)
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
-                                if not enabled then break end
-
                                 local subFolder = buttons:FindFirstChild(subName)
                                 if subFolder then
 
                                     for _, item in ipairs(subFolder:GetDescendants()) do
-                                        if not enabled then break end
-
                                         if item:IsA("RemoteFunction") and item.Name == "Purchase" then
 
                                             local btn = item.Parent
@@ -214,8 +208,6 @@ section1:toggle("Lemon Stand", false, function(enabled)
                                                 local success = false
 
                                                 for attempt = 1, 3 do
-                                                    if not enabled then break end
-
                                                     local ok, err = pcall(function()
                                                         item:InvokeServer(false)
                                                     end)
@@ -267,7 +259,6 @@ section1:toggle("Lemon Stand", false, function(enabled)
                     end
                 end
 
-                if not enabled then break end
                 task.wait(0.4)
             end
         end)
@@ -285,11 +276,9 @@ section1:toggle("Lemon Dash", false, function(enabled)
             or char:FindFirstChild("Torso")
     end
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local char = player.Character or player.CharacterAdded:Wait()
                 local torso = getTorso(char)
 
@@ -302,13 +291,9 @@ section1:toggle("Lemon Dash", false, function(enabled)
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
-                                if not enabled then break end
-
                                 local subFolder = buttons:FindFirstChild(subName)
                                 if subFolder then
                                     for _, item in ipairs(subFolder:GetDescendants()) do
-                                        if not enabled then break end
-
                                         if item:IsA("RemoteFunction") and item.Name == "Purchase" then
                                             local btn = item.Parent
                                             local enabledAttr = btn:GetAttribute("Enabled")
@@ -319,8 +304,6 @@ section1:toggle("Lemon Dash", false, function(enabled)
                                                 local success = false
 
                                                 for attempt = 1, 3 do
-                                                    if not enabled then break end
-
                                                     local ok, err = pcall(function()
                                                         item:InvokeServer(false)
                                                     end)
@@ -364,7 +347,6 @@ section1:toggle("Lemon Dash", false, function(enabled)
                         end
                     end
                 end
-                if not enabled then break end
                 task.wait(0.4)
             end
         end)
@@ -383,11 +365,9 @@ section1:toggle("Lemon Depot", false, function(enabled)
             or char:FindFirstChild("Torso")
     end
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local char = player.Character or player.CharacterAdded:Wait()
                 local torso = getTorso(char)
 
@@ -402,14 +382,10 @@ section1:toggle("Lemon Depot", false, function(enabled)
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
-                                if not enabled then break end
-
                                 local subFolder = buttons:FindFirstChild(subName)
                                 if subFolder then
 
                                     for _, item in ipairs(subFolder:GetDescendants()) do
-                                        if not enabled then break end
-
                                         if item:IsA("RemoteFunction") and item.Name == "Purchase" then
 
                                             local btn = item.Parent
@@ -422,8 +398,6 @@ section1:toggle("Lemon Depot", false, function(enabled)
                                                 local success = false
 
                                                 for attempt = 1, 3 do
-                                                    if not enabled then break end
-
                                                     local ok, err = pcall(function()
                                                         item:InvokeServer(false)
                                                     end)
@@ -472,7 +446,6 @@ section1:toggle("Lemon Depot", false, function(enabled)
                     end
                 end
 
-                if not enabled then break end
                 task.wait(0.4)
             end
         end)
@@ -491,11 +464,9 @@ section1:toggle("Hills", false, function(enabled)
             or char:FindFirstChild("Torso")
     end
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local char = player.Character or player.CharacterAdded:Wait()
                 local torso = getTorso(char)
 
@@ -508,8 +479,6 @@ section1:toggle("Hills", false, function(enabled)
 
                             -- Hills heeft GEEN subfolders → alles zit direct in Buttons
                             for _, item in ipairs(buttons:GetDescendants()) do
-                                if not enabled then break end
-
                                 if item:IsA("RemoteFunction") and item.Name == "Purchase" then
 
                                     local btn = item.Parent
@@ -522,8 +491,6 @@ section1:toggle("Hills", false, function(enabled)
                                         local success = false
 
                                         for attempt = 1, 3 do
-                                            if not enabled then break end
-
                                             local ok, err = pcall(function()
                                                 item:InvokeServer(false)
                                             end)
@@ -570,7 +537,6 @@ section1:toggle("Hills", false, function(enabled)
                     end
                 end
 
-                if not enabled then break end
                 task.wait(0.4)
             end
         end)
@@ -589,11 +555,9 @@ section1:toggle("Lemon Trading", false, function(enabled)
             or char:FindFirstChild("Torso")
     end
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local char = player.Character or player.CharacterAdded:Wait()
                 local torso = getTorso(char)
 
@@ -608,14 +572,10 @@ section1:toggle("Lemon Trading", false, function(enabled)
                             local subfolders = {"Decor", "Multiplier", "Other", "Structure"}
 
                             for _, subName in ipairs(subfolders) do
-                                if not enabled then break end
-
                                 local subFolder = buttons:FindFirstChild(subName)
                                 if subFolder then
 
                                     for _, item in ipairs(subFolder:GetDescendants()) do
-                                        if not enabled then break end
-
                                         if item:IsA("RemoteFunction") and item.Name == "Purchase" then
 
                                             local btn = item.Parent
@@ -628,8 +588,6 @@ section1:toggle("Lemon Trading", false, function(enabled)
                                                 local success = false
 
                                                 for attempt = 1, 3 do
-                                                    if not enabled then break end
-
                                                     local ok, err = pcall(function()
                                                         item:InvokeServer(false)
                                                     end)
@@ -678,7 +636,6 @@ section1:toggle("Lemon Trading", false, function(enabled)
                     end
                 end
 
-                if not enabled then break end
                 task.wait(0.4)
             end
         end)
@@ -693,11 +650,9 @@ section1:label("Auto-Upgrade")
 section1:toggle("Upgrade Lemon Stand", false, function(enabled)
     print("Upgrade Lemon Stand spam:", enabled)
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local event = PTC
                     and PTC.Purchases
                     and PTC.Purchases["Lemon Stand"]
@@ -711,7 +666,6 @@ section1:toggle("Upgrade Lemon Stand", false, function(enabled)
                     end)
                 end
 
-                if not enabled then break end
                 task.wait(0.1)
             end
         end)
@@ -724,17 +678,14 @@ end)
 section1:toggle("Upgrade LemonDash", false, function(enabled)
     print("Upgrade LemonDash spam:", enabled)
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local Event = PTC.Purchases.LemonDash.LemonDash.LemonDash.Upgrade
                 Event:InvokeServer(
                     1
                 )
 
-                if not enabled then break end
                 task.wait(0.1)
             end
         end)
@@ -744,17 +695,14 @@ end)
 section1:toggle("Upgrade Lemon Depot", false, function(enabled)
     print("Upgrade Lemon Depot spam:", enabled)
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local Event = PTC.Purchases["Lemon Depot"]["Lemon Depot"]["Lemon Depot"].Upgrade
                 Event:InvokeServer(
                     1
                 )
 
-                if not enabled then break end
                 task.wait(0.1)
             end
         end)
@@ -766,17 +714,14 @@ section1:label("Phone Offer")
 section1:toggle("Auto-Accept Phone Offers", false, function(enabled)
     print("Auto-Accept Phone Offers:", enabled)
 
-    if enabled then
+    if enabled == true then
         task.spawn(function()
-            while enabled do
-                if not enabled then break end
-
+            while enabled == true do
                 local Event = workspace.Tycoon2.Remotes.PhoneOffer
                 Event:FireServer(
                     "Accept"
                 )
 
-                if not enabled then break end
                 task.wait(0.1)
             end
         end)
